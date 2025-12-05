@@ -3,9 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font and smooth transitions */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            min-height: 100vh;
+        }
+        .btn-game {
+            transition: all 0.15s ease-in-out;
+        }
+        .btn-game:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+        .btn-game:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+    </style>
 </head>
-<body>
+<body class="flex flex-col items-center justify-center p-4">
+
+    <div class="max-w-xl w-full bg-white p-6 rounded-xl shadow-2xl border border-gray-100">
+        <h1 class="text-3xl font-extrabold text-center text-gray-800 mb-6">
+            Rock Paper Scissors
+        </h1>
+
+        <!-- Scoreboard Display -->
+        <div class="flex justify-around items-center bg-gray-50 p-4 rounded-lg mb-8 shadow-inner">
+            <div class="text-center">
+                <p class="text-xs font-semibold uppercase text-blue-600">You</p>
+                <p id="human-score" class="text-4xl font-mono font-bold text-gray-800">0</p>
+            </div>
+            <span class="text-4xl font-extrabold text-gray-400 mx-8">VS</span>
+            <div class="text-center">
+                <p class="text-xs font-semibold uppercase text-red-600">Computer</p>
+                <p id="computer-score" class="text-4xl font-mono font-bold text-gray-800">0</p>
+            </div>
+        </div>
+
+        <!-- Buttons Container -->
+        <div id="button-container" class="flex justify-center space-x-4 mb-8">
+            <button id="rock-btn" class="btn-game bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-lg flex items-center">
+                <span class="text-2xl mr-2">✊</span> Rock
+            </button>
+            <button id="paper-btn" class="btn-game bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full shadow-lg flex items-center">
+                <span class="text-2xl mr-2">✋</span> Paper
+            </button>
+            <button id="scissors-btn" class="btn-game bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-full shadow-lg flex items-center">
+                <span class="text-2xl mr-2">✌️</span> Scissors
+            </button>
+        </div>
+        
+        <!-- Results Display -->
+        <div id="results-container" class="min-h-24 p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+            <p id="round-result" class="text-lg font-medium text-gray-700 text-center mb-2">
+                Click a button to start the game!
+            </p>
+            <p id="game-message" class="text-xl font-extrabold text-center text-indigo-600">
+                First to 5 points wins!
+            </p>
+        </div>
+
+        <!-- New Game Button (Hidden initially) -->
+        <button id="reset-btn" class="hidden w-full mt-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full shadow-lg" onclick="resetGame()">
+            Play Again
+        </button>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
